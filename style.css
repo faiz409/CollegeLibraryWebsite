@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+body{
+    background: url(./bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Navbar */
+.bg-dark{
+    background: rgba(52, 58, 64, 0.8)!important;
+}
+
+.navbar-brand{
+    font-size: 1.2rem;
+}
+
+.searchTxt{
+    background: white;
+    border: none;
+    outline: none;
+}
+
+/* Alert Box */
+.alert-success{
+    background: rgba(161, 161, 235, 0.8);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: white;
+}
+
+.alert-danger{
+    background: rgba(161, 161, 235, 0.8);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: white;
+}
+
+/* Form Design */
+.col-form-label{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.form-check-label{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.form-group .col-sm-10 .form-control{
+    color: black;
+    border: none;
+    outline: none;
+    height: 2.2rem;
+}
+
+/* Table design */
+.dataContainer{
+    background: rgba(161, 161, 235, 0.8);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 20px 30px 25px 30px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.table{
+    color: black;
+}
+
+.table thead tr th{
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 5px .75rem;
+    border: 0 !important;
+}
+
+.table tbody{
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: block;
+    height: 150px;
+    overflow-y: auto;
+}
+
+.table tbody td,
+.table thead>tr>th {
+    float: left;
+    padding-left: 20px;
+    width: 33%;
+}
+
+.table .col {
+    width: 33%;
+}
+
+.table tr {
+    display: block;
+}
+
+/* Btton style */
+.btn{
+    height: 2.2rem;
+}
+
+.btn-primary{
+    background: rgb(161, 161, 235);
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.btn-primary:hover{
+    background: rgba(161, 161, 235, 0.8);
+}
+
+.btn-outline-primary{
+    background: rgb(161, 161, 235);
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.btn-outline-primary:hover{
+    background: rgba(161, 161, 235, 0.8);
+}
+
+/* Utility */
+
+hr{
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}
+
+.h4, h4{
+    margin-bottom: 10px;
+}
+
+
+

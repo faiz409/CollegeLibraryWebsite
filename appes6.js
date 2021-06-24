@@ -1,17 +1,25 @@
+class Book {
+    constructor(name, author, type) {
+        this.name = name;
+        this.author = author;
+        this.type = type;
+    }
+}
+
 class Display {
     add(book) {
-        console.log("Adding to UI");
-        let tableBody = document.getElementById('tableBody');
-        let uiString = ` <tr>
-                             <td>${book.name}</td>
+        let tableBody = document.querySelector('#tableBody');
+        let uiString = `<tr>
+                            <td>${book.name}</td>
                             <td>${book.author}</td>
                             <td>${book.type}</td>
                         </tr>`;
+
         tableBody.innerHTML += uiString;
     }
 
     clear() {
-        let libraryForm = document.getElementById('libraryForm');
+        let libraryForm = document.querySelector('#libraryForm');
         libraryForm.reset();
     }
 
@@ -24,70 +32,87 @@ class Display {
         }
     }
 
-    show(type, displayMessage) {
-        let message = document.getElementById('message');
+    show(type, displayMassege) {
         let boldText;
         if (type === 'success') {
-            boldText = 'Success';
+            boldText = "Success";
         }
         else {
-            boldText = 'Error!';
+            boldText = "Erroer";
         }
+        let message = document.querySelector('#message');
         message.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
-        <strong>${boldText}</strong> ${displayMessage}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>`;
+                            <strong>${boldText}:</strong> ${displayMassege}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>`;
+
         setTimeout(() => {
             message.innerHTML = '';
         }, 5000);
     }
 }
 
-// Add submit event listener to libraryForm
-let libraryForm = document.getElementById('libraryForm');
+let libraryForm = document.querySelector('#libraryForm');
 libraryForm.addEventListener('submit', libraryFormSubmit);
 
 function libraryFormSubmit(e) {
-
-    class Book {
-        constructor(name, author, type) {
-            this.name = name;
-            this.author = author;
-            this.type = type;
-        }
-    }
-    console.log("You have submitted library form");
-    let name = document.getElementById('bookName').value;
-    let author = document.getElementById('author').value;
+    let name = document.querySelector('#bookName').value;
+    let author = document.querySelector('#author').value;
     let type;
 
-    let fiction = document.getElementById('fiction');
-    let programming = document.getElementById('programming');
-    let cooking = document.getElementById('cooking');
+    let fiction = document.querySelector('#fiction');
+    let programming = document.querySelector('#programming')
+    let cooking = document.querySelector('#cooking');
 
     if (fiction.checked) {
         type = fiction.value;
-    } else if (programming.checked) {
+    }
+    else if (programming.checked) {
         type = programming.value;
-    } else if (cooking.checked) {
+    }
+    else if (cooking.checked) {
         type = cooking.value;
     }
+
     let book = new Book(name, author, type);
     console.log(book);
 
     let display = new Display();
-
     if (display.validate(book)) {
         display.add(book);
         display.clear();
-        display.show('success', 'Your book has been succesfully added.');
+        display.show('success', 'Submit');
     }
     else {
-        // Show error to the error
-        display.show('danger', 'Sorry you cannot add this book.');
+        display.show('danger', 'Not Submit');
     }
 
     e.preventDefault();
+
+}
+
+let findData = document.getElementById('findBtn');
+findData.addEventListener('click', searchVal);
+
+function searchVal(e) {
+    e.preventDefault();
+    let filter = document.getElementById('searchTxt').value.toUpperCase();
+    let myTable = document.getElementById('myTable');
+    let tr = myTable.getElementsByTagName('tr');
+
+    for (var i = 0; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName('td')[0];
+
+        if (td) {
+            let textValue = td.textContent || td.innerHTML;
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            }
+            else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 }
