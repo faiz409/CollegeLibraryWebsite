@@ -56,11 +56,11 @@ Display.prototype.clear = function () {
 
 // Implement valtidate function
 Display.prototype.validate = function (book) {
-    if (book.name.length > 2 || book.author.length > 2) {
-        return true;
+    if (book.name.length < 2 || book.author.length < 2 || book.name.toUpperCase() === book.author.toUpperCase()) {
+        return false;
     }
     else {
-        return false;
+        return true;
     }
 }
 
@@ -123,7 +123,7 @@ function libraryFormSubmit(e) {
     }
 
     // Add Data In localStorage
-    if (book.name != '' && book.author != '' && book.name.length > 2 && book.author.length > 2) {
+    if (book.name != '' && book.author != '' && book.name.length > 2 && book.author.length > 2 && book.name.toUpperCase() !== book.author.toUpperCase()) {
         let getData = localStorage.getItem("book");
         if (getData == null) {
             dataObj = [];
@@ -142,7 +142,7 @@ function libraryFormSubmit(e) {
 
 }
 
-// Search Data 
+// Search data from search bar. 
 let findData = document.getElementById('findBtn');
 findData.addEventListener('click', searchVal);
 
@@ -154,7 +154,6 @@ function searchVal(e) {
 
     for (var i = 0; i < tr.length; i++) {
         let td = tr[i].getElementsByTagName('td')[1];
-
         if (td) {
             let textValue = td.textContent || td.innerHTML;
             if (textValue.toUpperCase().indexOf(filter) > -1) {

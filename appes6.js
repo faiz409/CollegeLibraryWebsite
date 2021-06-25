@@ -24,7 +24,7 @@ class Display {
     }
 
     validate(book) {
-        if (book.name.length < 2 || book.author.length < 2) {
+        if (book.name.length < 2 || book.author.length < 2 || book.name.toUpperCase() === book.author.toUpperCase()) {
             return false;
         }
         else {
@@ -54,10 +54,37 @@ class Display {
     }
 }
 
+// Add method to show Data
+function showData(book) {
+    let getData = localStorage.getItem("book");
+    if (getData == null) {
+        dataObj = [];
+    }
+    else {
+        dataObj = JSON.parse(getData);
+    }
+    let html = "";
+    dataObj.forEach(function (book) {
+        html += `<tr>
+                    <td class="col nameOfBook" >${book.name}</td>
+                    <td class="col authorOfBook">${book.author}</td>
+                    <td class="col typeOfBook" >${book.type}</td>
+                </tr>`;
+    });
+    let finalData = document.querySelector('#tableBody');
+    if (tableBody.length != 0) {
+        finalData.innerHTML = html;
+    }
+}
+
+showData();
+
+
 let libraryForm = document.querySelector('#libraryForm');
 libraryForm.addEventListener('submit', libraryFormSubmit);
 
 function libraryFormSubmit(e) {
+    e.preventDefault();
     let name = document.querySelector('#bookName').value;
     let author = document.querySelector('#author').value;
     let type;
@@ -89,10 +116,27 @@ function libraryFormSubmit(e) {
         display.show('danger', 'Not Submit');
     }
 
-    e.preventDefault();
 
+    // Add Data In localStorage
+    if (book.name != '' && book.author != '' && book.name.length > 2 && book.author.length > 2 && book.name.toUpperCase() !== book.author.toUpperCase()) {
+        let getData = localStorage.getItem("book");
+        if (getData == null) {
+            dataObj = [];
+        }
+        else {
+            dataObj = JSON.parse(getData);
+        }
+        dataObj.push(book);
+        localStorage.setItem("book", JSON.stringify(dataObj));
+        name = "";
+        author = "";
+    }
+    else {
+        return false;
+    }
 }
 
+// Search data from search bar. 
 let findData = document.getElementById('findBtn');
 findData.addEventListener('click', searchVal);
 
@@ -103,7 +147,7 @@ function searchVal(e) {
     let tr = myTable.getElementsByTagName('tr');
 
     for (var i = 0; i < tr.length; i++) {
-        let td = tr[i].getElementsByTagName('td')[0];
+        let td = tr[i].getElementsByTagName('td')[1];
 
         if (td) {
             let textValue = td.textContent || td.innerHTML;

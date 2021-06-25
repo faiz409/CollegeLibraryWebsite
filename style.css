@@ -1,32 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
 body{
-    background: url(./bg.jpg);
+    background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) , url(./bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     color: white;
     font-family: 'Open Sans', sans-serif;
+    
 }
 
 /* Navbar */
 .bg-dark{
-    background: rgba(52, 58, 64, 0.8)!important;
+    background: rgba(52, 58, 64, 0.9)!important;
+}
+
+.navbar{
+    padding: 5px 1rem;
 }
 
 .navbar-brand{
     font-size: 1.2rem;
 }
 
-.searchTxt{
+#searchTxt{
     background: white;
-    border: none;
-    outline: none;
+    height: 2rem;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#searchTxt:active, #searchTxt:hover{
+    border: none !important;
+    outline: none !important;
 }
 
 /* Alert Box */
 .alert-success{
-    background: rgba(161, 161, 235, 0.8);
+    background: rgba(161, 161, 235, 0.9);
     border: none;
     outline: none;
     border-radius: 4px;
@@ -34,7 +46,7 @@ body{
 }
 
 .alert-danger{
-    background: rgba(161, 161, 235, 0.8);
+    background: rgba(161, 161, 235, 0.9);
     border: none;
     outline: none;
     border-radius: 4px;
@@ -42,6 +54,14 @@ body{
 }
 
 /* Form Design */
+.mainForm{
+    background: rgba(161, 161, 235, 0.9);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 1rem 2rem 1px;
+}
+
 .col-form-label{
     font-size: 1.2rem;
     font-weight: 500;
@@ -54,19 +74,25 @@ body{
 
 .form-group .col-sm-10 .form-control{
     color: black;
-    border: none;
-    outline: none;
-    height: 2.2rem;
+    height: 2rem;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.form-group .col-sm-10 .form-control:active , .form-group .col-sm-10 .form-control:hover{
+    border: none !important;
+    outline: none !important;
 }
 
 /* Table design */
 .dataContainer{
-    background: rgba(161, 161, 235, 0.8);
+    background: rgba(161, 161, 235, 0.9);
     border: none;
     outline: none;
     border-radius: 4px;
-    padding: 20px 30px 25px 30px;
-    margin-top: 0px !important;
+    padding: 15px 30px 10px;
+    margin-top: 1rem !important;
     margin-bottom: 0px !important;
 }
 
@@ -78,7 +104,7 @@ body{
     color: white;
     font-size: 1.2rem;
     font-weight: 500;
-    padding: 5px .75rem;
+    padding: 5px;
     border: 0 !important;
 }
 
@@ -87,14 +113,14 @@ body{
     font-size: 1.2rem;
     font-weight: 500;
     display: block;
-    height: 150px;
+    height: 200px;
     overflow-y: auto;
 }
 
 .table tbody td,
 .table thead>tr>th {
     float: left;
-    padding-left: 20px;
+    padding-left: 10px;
     width: 33%;
 }
 
@@ -108,29 +134,37 @@ body{
 
 /* Btton style */
 .btn{
-    height: 2.2rem;
+    height: 2rem;
+    padding: 4px 10px;
+    box-shadow: none !important;
+}
+
+.btn:active{
+    border: none !important;
 }
 
 .btn-primary{
-    background: rgb(161, 161, 235);
-    color: white;
-    border: none;
-    outline: none;
+    color: rgb(161, 161, 235) !important;
+    background: white !important;
+    border: 1px solid white !important;
 }
 
-.btn-primary:hover{
-    background: rgba(161, 161, 235, 0.8);
+.btn-primary:hover , .btn-primary:active{
+    background: rgba(161, 161, 235, 0.8) !important;
+    color: white !important;
+    border-color: white !important;
 }
 
 .btn-outline-primary{
-    background: rgb(161, 161, 235);
-    color: white;
-    border: none;
-    outline: none;
+    color: white !important;
+    background: rgb(161, 161, 235) !important;
+    border: 1px solid rgb(161, 161, 235) !important;
 }
 
-.btn-outline-primary:hover{
-    background: rgba(161, 161, 235, 0.8);
+.btn-outline-primary:hover , .btn-outline-primary:active{
+    background: white !important;
+    color: rgb(161, 161, 235) !important;
+    border-color: rgb(161, 161, 235) !important;
 }
 
 /* Utility */
@@ -138,10 +172,6 @@ body{
 hr{
     margin-top: 0px;
     margin-bottom: 1rem;
-}
-
-.h4, h4{
-    margin-bottom: 10px;
 }
 
 
